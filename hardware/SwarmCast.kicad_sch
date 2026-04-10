@@ -1,0 +1,23 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "6389127c-e899-4fc3-9274-406ec2044a2e")
+	(paper "A4")
+	(title_block
+		(title "SwarmCast")
+		(date "2026-04-10")
+		(rev "V1.0")
+		(company "Hardware Hackathon 3.0")
+		(comment 1 "Team: Octatropes (Team 2)")
+		(comment 2 "Board: Main Board")
+		(comment 3 "Designer: Rohit")
+	)
+	(lib_symbols)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)
