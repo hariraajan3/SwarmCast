@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "pcbcupid") (type "KiCad") (uri "${KICAD10_PCBCUPID_SYMBOL_DIR}/pcbcupid.kicad_sym") (options "") (descr ""))
+)

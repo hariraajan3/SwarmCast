@@ -1,0 +1,4 @@
+(fp_lib_table
+	(version 7)
+	(lib (name "pcbcupid_footprint") (type "KiCad") (uri "${KICAD10_PCBCUPID_FOOTPRINT_DIR}/pcbcupid_footprint.pretty") (options "") (descr ""))
+)
