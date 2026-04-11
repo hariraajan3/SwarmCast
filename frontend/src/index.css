@@ -126,3 +126,34 @@
 }
 
 
+/* Leaflet HUD Popup Overrides */
+.leaflet-popup-content-wrapper {
+  padding: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  width: fit-content !important;
+  padding: 0 !important;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.8); }
+}
+
+.animate-blink {
+  animation: blink 0.8s ease-in-out infinite;
+}
+
+.leaflet-popup-tip-container {
+  display: none !important; /* Optional: hides the arrow for a cleaner HUD look */
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+  display: none !important; /* We use hover/click to close, keep HUD clean */
+}
