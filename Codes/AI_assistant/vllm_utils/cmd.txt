@@ -1,0 +1,15 @@
+vllm serve Qwen/Qwen3.5-0.8B   --port 8000   --tensor-parallel-size 1   --max-model-len 512   --gpu-memory-utilization 0.95   --dtype float16  --cudagraph_capture_sizes 1
+
+
+
+"""
+
+Run vLLM server first:
+    vllm serve Qwen/Qwen3.5-0.8B --port 8000 --tensor-parallel-size 1 \
+        --max-model-len 512 --gpu-memory-utilization 0.95 --dtype float16 \
+        --cudagraph_capture_sizes 1
+
+Usage:
+    python weather_assistant.py                   # emulate sensor data
+    python weather_assistant.py --no-emulate      # read from ESP32 (future)
+"""
