@@ -76,7 +76,7 @@ export default function Sidebar({ nodes, selectedNode, onSelectNode, isOpen, onT
                   <div className="flex items-center gap-1 mt-0.5 whitespace-nowrap">
                     <MapPin size={11} className="text-[var(--text-muted)]" />
                     <span className="font-mono text-[0.6rem] font-bold text-[var(--text-muted)] tracking-tighter uppercase">
-                      {node.lat.toFixed(3)} {node.lon.toFixed(3)}
+                      {node.lat.toFixed(3)}, {node.lon.toFixed(3)}
                     </span>
                   </div>
                 </div>
@@ -131,10 +131,18 @@ export default function Sidebar({ nodes, selectedNode, onSelectNode, isOpen, onT
 
                 {/* Footer: Status & Time */}
                 <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-[var(--border-subtle)]/30">
-                  <span className={`text-[0.6rem] font-black px-1.5 py-0.5 rounded flex items-center gap-1 uppercase tracking-tighter ${node.status === 'online' ? 'bg-[var(--accent-emerald-dim)] text-[var(--accent-emerald)]' : 'bg-[var(--accent-amber-dim)] text-[var(--accent-amber)]'
+                  
+                  <span className={`inline-flex items-center justify-center gap-1.5 px-2 py-1 rounded text-[0.65rem] font-bold uppercase tracking-wide leading-none
+                       ${node.status === 'online' ? 'bg-[var(--accent-emerald-dim)] text-[var(--accent-emerald)]'
+                        : 'bg-[var(--accent-amber-dim)] text-[var(--accent-amber)]'
                     }`}>
-                    <span className={`w-1.5 h-1.5 rounded-full ${node.status === 'online' ? 'bg-[var(--accent-emerald)] animate-pulse' : 'bg-[var(--accent-amber)]'}`} />
-                    {node.status}
+                      
+                      <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0
+                        ${node.status === 'online'
+                          ? 'bg-[var(--accent-emerald)] animate-pulse'
+                          : 'bg-[var(--accent-amber)]'
+                      }`} />
+                      <span className="flex items-center">{node.status}</span>
                   </span>
                   <span className="text-[0.6rem] font-bold text-[var(--text-muted)] flex items-center gap-1">
                     <Clock size={10} /> {node.last_updated}

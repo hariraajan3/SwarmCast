@@ -28,7 +28,7 @@ export default function NodeModal({ isOpen, onClose, onAdd, onDelete, initialDat
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Combine manual input with baseline telemetry
     const nodePayload = isEdit ? { ...initialData, ...formData, lat: parseFloat(formData.lat), lon: parseFloat(formData.lon) } : {
       ...formData,
@@ -46,7 +46,7 @@ export default function NodeModal({ isOpen, onClose, onAdd, onDelete, initialDat
       condition: 'Sunny',
       last_updated: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
-    
+
     onAdd(nodePayload);
     if (!isEdit) setFormData({ node_id: '', name: '', lat: '', lon: '' });
     onClose();
@@ -55,7 +55,7 @@ export default function NodeModal({ isOpen, onClose, onAdd, onDelete, initialDat
   return (
     <div className="fixed inset-0 z-[2000] flex items-center justify-center p-4 animate-in fade-in duration-300">
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      
+
       <div className="relative w-full max-w-md bg-[var(--bg-card)] backdrop-blur-2xl border border-[var(--border-subtle)] rounded-3xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] overflow-hidden animate-in zoom-in-95 slide-in-from-bottom-10 duration-500">
         {/* Header */}
         <div className="p-6 border-b border-[var(--border-subtle)] bg-gradient-to-r from-[var(--bg-secondary)]/50 to-transparent flex items-center justify-between">
@@ -67,14 +67,14 @@ export default function NodeModal({ isOpen, onClose, onAdd, onDelete, initialDat
               {isEdit ? 'Modifying Active Hardware' : 'Network Expansion Protocol'}
             </p>
           </div>
-          
+
           {isEdit && (
             <button
               type="button"
               onClick={() => {
-                  onDelete(initialData.node_id);
-                  onClose();
-                }
+                onDelete(initialData.node_id);
+                onClose();
+              }
               }
               className="p-2.5 rounded-xl bg-[var(--bg-secondary)] hover:bg-rose-500/10 text-[var(--text-muted)] hover:text-rose-500 border border-[var(--border-subtle)] hover:border-rose-500/30 transition-all group"
               title="Decommission Node"
@@ -88,11 +88,11 @@ export default function NodeModal({ isOpen, onClose, onAdd, onDelete, initialDat
           {/* Identity Section */}
           <div className="space-y-3">
             <label className="text-[0.65rem] font-bold text-[var(--text-muted)] uppercase tracking-[0.1em] px-1 block text-center">Hardware Identity *</label>
-            <input 
+            <input
               type="text"
               placeholder="Enter Node ID"
               value={formData.node_id}
-              onChange={e => setFormData({...formData, node_id: e.target.value})}
+              onChange={e => setFormData({ ...formData, node_id: e.target.value })}
               className={`w-full bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-xl px-4 py-3.5 text-base font-bold text-center text-[var(--text-primary)] focus:border-[var(--accent-cyan)] outline-none transition-all placeholder:text-[var(--text-muted)]/40 focus:bg-[var(--bg-card)] tracking-widest ${isEdit ? 'opacity-50 cursor-not-allowed' : ''}`}
               required
               disabled={isEdit}
@@ -102,11 +102,11 @@ export default function NodeModal({ isOpen, onClose, onAdd, onDelete, initialDat
           {/* Alias Section - Optional */}
           <div className="space-y-3">
             <label className="text-[0.65rem] font-bold text-[var(--text-muted)] uppercase tracking-[0.1em] px-1 block text-center">Software Alias</label>
-            <input 
+            <input
               type="text"
               placeholder="e.g. MG Road Meter"
               value={formData.name}
-              onChange={e => setFormData({...formData, name: e.target.value})}
+              onChange={e => setFormData({ ...formData, name: e.target.value })}
               className="w-full bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-xl px-4 py-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-cyan)] outline-none transition-all placeholder:text-[var(--text-muted)]/40 focus:bg-[var(--bg-card)]"
             />
           </div>
@@ -117,24 +117,24 @@ export default function NodeModal({ isOpen, onClose, onAdd, onDelete, initialDat
             <div className="grid grid-cols-2 gap-4">
               <div className="relative group">
                 <MapPin size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] transition-colors group-focus-within:text-[var(--accent-cyan)]" />
-                <input 
+                <input
                   type="number"
                   step="any"
                   placeholder="Latitude"
                   value={formData.lat}
-                  onChange={e => setFormData({...formData, lat: e.target.value})}
+                  onChange={e => setFormData({ ...formData, lat: e.target.value })}
                   className="w-full bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-xl pl-10 pr-4 py-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-cyan)] outline-none transition-all placeholder:text-[var(--text-muted)]/40 focus:bg-[var(--bg-card)]"
                   required
                 />
               </div>
               <div className="relative group">
                 <MapPin size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--text-muted)] transition-colors group-focus-within:text-[var(--accent-cyan)]" />
-                <input 
+                <input
                   type="number"
                   step="any"
                   placeholder="Longitude"
                   value={formData.lon}
-                  onChange={e => setFormData({...formData, lon: e.target.value})}
+                  onChange={e => setFormData({ ...formData, lon: e.target.value })}
                   className="w-full bg-[var(--bg-secondary)] border border-[var(--border-subtle)] rounded-xl pl-10 pr-4 py-3 text-sm text-[var(--text-primary)] focus:border-[var(--accent-cyan)] outline-none transition-all placeholder:text-[var(--text-muted)]/40 focus:bg-[var(--bg-card)]"
                   required
                 />
@@ -144,14 +144,14 @@ export default function NodeModal({ isOpen, onClose, onAdd, onDelete, initialDat
 
           {/* Footer Actions */}
           <div className="flex items-center gap-3 pt-2">
-            <button 
+            <button
               type="button"
               onClick={onClose}
               className="flex-1 px-4 py-4 bg-[var(--bg-secondary)] hover:bg-[var(--bg-card-hover)] text-[var(--text-primary)] text-xs font-bold uppercase tracking-widest rounded-xl transition-all border border-[var(--border-subtle)]"
             >
               Cancel
             </button>
-            <button 
+            <button
               type="submit"
               className="flex-[2] py-4 rounded-xl bg-gradient-to-r from-[var(--accent-cyan)] to-[var(--accent-emerald)] text-white font-bold text-xs uppercase tracking-[0.2em] shadow-[0_10px_30px_rgba(6,182,212,0.25)] hover:scale-[1.02] hover:shadow-[0_15px_35px_rgba(6,182,212,0.35)] active:scale-95 transition-all flex items-center justify-center gap-3 group cursor-pointer"
             >

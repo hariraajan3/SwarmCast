@@ -32,7 +32,7 @@ export default function Header({
           </div>
           <div className="flex flex-col gap-0">
             <h1 className="text-[1.1rem] font-extrabold tracking-tight bg-gradient-to-br from-[#06b6d4] to-[#10b981] bg-clip-text text-transparent leading-tight">SwarmCast</h1>
-            <span className="text-[0.65rem] font-medium text-[var(--text-muted)] tracking-[0.08em] uppercase">Mesh Weather Intelligence</span>
+            <span className="text-[0.65rem] font-medium text-[var(--text-muted)] tracking-[0.08em] uppercase">Tactical Weather Intelligence</span>
           </div>
         </div>
      
