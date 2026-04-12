@@ -169,14 +169,15 @@ function RainLayer({ nodes, active }) {
     nodes.forEach(n => {
       const intensity = n.telemetry?.rain_intensity ?? 0;
       if (intensity === 0) return;
-      const count = Math.ceil((intensity / 50) * 30) + 5;
+      const count = Math.ceil((intensity / 50) * 40) + 10;
       for (let i = 0; i < count; i++) {
         drops.push({
-          baseLat: n.lat + (Math.random() - 0.5) * 0.015,
-          baseLon: n.lon + (Math.random() - 0.5) * 0.015,
-          offsetY: Math.random() * 200,
+          baseLat: n.lat + (Math.random() - 0.5) * 0.008,
+          baseLon: n.lon + (Math.random() - 0.5) * 0.008,
+          progress: Math.random() * 120,
+          maxProgress: 80 + Math.random() * 40,
           speed:   2 + Math.random() * 3,
-          length:  8 + Math.random() * 12,
+          length:  6 + Math.random() * 8,
           opacity: 0.3 + (intensity / 50) * 0.5,
         });
       }
@@ -191,14 +192,19 @@ function RainLayer({ nodes, active }) {
 
       drops.forEach(d => {
         const pt = map.latLngToContainerPoint([d.baseLat, d.baseLon]);
-        d.offsetY = (d.offsetY + d.speed) % (canvas.height + 20);
+        d.progress = (d.progress + d.speed) % d.maxProgress;
+        
         const x = pt.x;
-        const y = (pt.y + d.offsetY) % canvas.height;
+        const y = pt.y - (d.maxProgress / 2) + d.progress;
+        
+        // Smooth fade in and out for the drop life cycle
+        const fade = Math.sin((d.progress / d.maxProgress) * Math.PI);
+
         ctx.beginPath();
         ctx.moveTo(x, y);
         ctx.lineTo(x - 1, y + d.length);
-        ctx.strokeStyle = `rgba(147, 210, 255, ${d.opacity})`;
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = `rgba(147, 210, 255, ${d.opacity * fade})`;
+        ctx.lineWidth = 1.5;
         ctx.lineCap = 'round';
         ctx.stroke();
       });
